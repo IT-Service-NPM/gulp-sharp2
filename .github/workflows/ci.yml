@@ -302,6 +302,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup NodeJS latest
+        # изменения ради фиксации
         id: setup-node
         uses: actions/setup-node@v6
         with:
