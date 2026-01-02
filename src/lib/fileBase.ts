@@ -1,5 +1,4 @@
-import assert from 'node:assert/strict';
-import { Duplex } from 'node:stream';
+// import assert from 'node:assert/strict';
 import { Transform, type TransformCallback } from 'node:stream';
 import { callbackify } from 'util';
 import PluginError from 'plugin-error';
@@ -163,26 +162,4 @@ export abstract class GulpFile2GulpFile extends GulpFile2BufferFile {
     })(callback);
   };
 
-};
-
-// TODO: replace with stream.compose in future
-/**
- * Compose workaround for
- * represent streams pipeline as Transform stream.
- *
- * @param streams - streams for composing into pipeline
- *
- * @internal
- */
-export function compose(
-  ...streams: NodeJS.ReadWriteStream[]
-): NodeJS.ReadWriteStream {
-  assert(streams.length > 0, 'Expected streams');
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const writable: NodeJS.ReadWriteStream = streams[0]!;
-  const readable = streams.reduce((writable, readable) => {
-    return writable.pipe(readable);
-  });
-  const composedStream = Duplex.from({ writable, readable });
-  return composedStream;
 };

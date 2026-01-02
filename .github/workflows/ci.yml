@@ -54,13 +54,13 @@ jobs:
           fetch-depth: 1
 
       - name: Setup NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: latest
 
       - name: Cache dependencies
         id: cache-deps
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules
           key: OS:ubuntu-latest:Node:latest:package.json:${{hashFiles('package.json')}}
@@ -71,7 +71,7 @@ jobs:
 
       - name: Cache package dist
         id: cache-dist
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: dist
           key: package-dist-${{github.run_id}}
@@ -79,7 +79,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@v8
         id: read-package-json
         with:
           result-encoding: string
@@ -109,7 +109,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        node-version: ['20.x', '21.x', '22.x', 'latest']
+        node-version: ['20.x', '21.x', '22.x', '23.x', '24.x', 'latest']
         include:
           - os: 'ubuntu-latest'
             node-version: 'latest'
@@ -124,13 +124,13 @@ jobs:
 
       - name: Setup NodeJS ${{ matrix.node-version }}
         id: setup-node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache dependencies
         id: cache-deps
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules
           key: OS:${{ matrix.os }}:Node:${{ matrix.node-version }}:package.json:${{hashFiles('package.json')}}
@@ -141,7 +141,7 @@ jobs:
 
       - name: Cache package dist
         id: cache-dist
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: dist
           key: package-dist-${{github.run_id}}
@@ -215,7 +215,7 @@ jobs:
           path: coverage
 
       - name: Set badge color2
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         id: get-badge-color
         with:
           result-encoding: string
@@ -263,20 +263,16 @@ jobs:
           path: ${{ fromJSON( needs.build.outputs.package-json).name }}-coverage.svg
 
       - name: Upload Test Results Badge to Gist
-        if: >
-          github.event_name == 'workflow_run' && github.event.workflow_run.head_branch == 'main' ||
-          github.event_name != 'workflow_run' && github.ref == 'refs/heads/main'
-        uses: andymckay/append-gist-action@6e8d64427fe47cbacf4ab6b890411f1d67c07f3e
+        if: github.ref_name == 'main'
+        uses: andymckay/append-gist-action@ab30bf28df67017c7ad696500b218558c7c04db3
         with:
           token: ${{ secrets.GIST_TOKEN }}
           gistURL: https://gist.githubusercontent.com/sergey-s-betke/d70e4de09a490afc9fb7a737363b231a
           file: ${{ fromJSON( needs.build.outputs.package-json).name }}-tests.svg
 
       - name: Upload Test Coverage Badge to Gist
-        if: >
-          github.event_name == 'workflow_run' && github.event.workflow_run.head_branch == 'main' ||
-          github.event_name != 'workflow_run' && github.ref == 'refs/heads/main'
-        uses: andymckay/append-gist-action@6e8d64427fe47cbacf4ab6b890411f1d67c07f3e
+        if: github.ref_name == 'main'
+        uses: andymckay/append-gist-action@ab30bf28df67017c7ad696500b218558c7c04db3
         with:
           token: ${{ secrets.GIST_TOKEN }}
           gistURL: https://gist.githubusercontent.com/sergey-s-betke/d70e4de09a490afc9fb7a737363b231a
@@ -291,7 +287,7 @@ jobs:
       - build
       - tests
     if: >
-      github.event_name == 'workflow_run' && github.event.workflow_run.head_branch == 'main' ||
+      github.event_name == 'workflow_run' ||
       github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
@@ -307,13 +303,13 @@ jobs:
 
       - name: Setup NodeJS latest
         id: setup-node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: latest
 
       - name: Cache dependencies
         id: cache-deps
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules
           key: OS:ubuntu-latest:Node:latest:package.json:${{hashFiles('package.json')}}
@@ -324,7 +320,7 @@ jobs:
 
       - name: Cache package dist
         id: cache-dist
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: dist
           key: package-dist-${{github.run_id}}
@@ -338,14 +334,14 @@ jobs:
 
       - name: Cache readme.md
         id: cache-readme
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: readme.md
           key: package-readme-${{github.run_id}}
 
       - name: Cache package.json
         id: cache-package-json
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: package.json
           key: package.json-${{github.run_id}}
@@ -359,7 +355,7 @@ jobs:
       #     commit_message: "docs: update API description and examples [skip ci]"
       #     file_pattern: 'docs/*.md readme.md test/examples/**/readme.md'
 
-      - uses: codfish/semantic-release-action@v3
+      - uses: codfish/semantic-release-action@v4
         id: release-to-GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -437,13 +433,13 @@ jobs:
 
       - name: Setup NodeJS latest
         id: setup-node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: latest
 
       - name: Cache dependencies
         id: cache-deps
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules
           key: OS:ubuntu-latest:Node:latest:package.json:${{hashFiles('package.json')}}
@@ -454,7 +450,7 @@ jobs:
 
       - name: Cache package dist
         id: cache-dist
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: dist
           key: package-dist-${{github.run_id}}
@@ -465,7 +461,7 @@ jobs:
 
       - name: Cache readme.md
         id: cache-readme
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: readme.md
           key: package-readme-${{github.run_id}}
@@ -476,12 +472,12 @@ jobs:
 
       - name: Cache package.json
         id: cache-package-json
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: package.json
           key: package.json-${{github.run_id}}
 
-      - uses: codfish/semantic-release-action@v3
+      - uses: codfish/semantic-release-action@v4
         if: steps.cache-package-json.outputs.cache-hit != 'true'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -497,6 +493,6 @@ jobs:
               }]
             ]
 
-      - uses: JS-DevTools/npm-publish@v3
+      - uses: JS-DevTools/npm-publish@v4
         with:
           token: ${{ secrets.NPM_TOKEN }}
