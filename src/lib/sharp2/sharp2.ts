@@ -14,8 +14,7 @@ import GulpFile, { type BufferFile } from 'vinyl';
 import { GulpFile2BufferFile } from './fileBase.ts';
 import sharp, { type Sharp, type SharpOptions } from 'sharp';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const PLUGIN_NAME = 'gulp-sharp2';
+// const PLUGIN_NAME = 'gulp-sharp2';
 
 /**
  * {@link sharp2} plugin options
