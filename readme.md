@@ -101,7 +101,6 @@ function task1() {
 };
 task1.description = 'Test gulp task for converting SVG to monochrome PNG';
 GulpClient.task(task1);
-
 ```
 
 Source SVG image:
