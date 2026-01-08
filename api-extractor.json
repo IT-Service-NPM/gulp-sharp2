@@ -21,7 +21,7 @@
     "enabled": true,
     "apiJsonFilePath": "<projectFolder>/temp/<unscopedPackageName>.api.json",
     "includeForgottenExports": false,
-    "projectFolderUrl": "https://github.com/IT-Service-NPM/gulp-file2qr/tree/main/"
+    "projectFolderUrl": "https://github.com/IT-Service-NPM/gulp-sharp2/tree/main/"
   },
   "dtsRollup": {
     "enabled": false

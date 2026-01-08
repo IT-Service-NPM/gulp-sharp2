@@ -31,5 +31,9 @@
     // "emitDeclarationOnly": true,
     // "exactOptionalPropertyTypes": true,
     "allowImportingTsExtensions": true,
+    "types": [
+      // "vitest/globals",
+      // "@altano/vitest-plugins/matchers"
+    ],
   }
 }

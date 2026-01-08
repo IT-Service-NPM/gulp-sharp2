@@ -19,7 +19,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[gulp-file2qr](./gulp-file2qr.md)
+[gulp-sharp2](./gulp-sharp2.md)
 
 
 </td><td>
@@ -27,3 +27,4 @@ Description
 
 </td></tr>
 </tbody></table>
+

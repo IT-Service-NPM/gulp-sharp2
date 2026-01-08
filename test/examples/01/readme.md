@@ -1,29 +1,40 @@
-### Create PNG QRCode from .url files with default settings
+### Convert SVG to monochrome PNG
 
-`url2qr` can create PNG QRCodes from .url files.
+`sharp2` can create monochrome PNG from .svg files.
 
 ```typescript file=./gulpfile.ts
-import { url2qr } from '#gulp-file2qr';
+import { sharp2 } from '#gulp-sharp2';
 import GulpClient from 'gulp';
+import rename from 'gulp-rename';
 
 function task1() {
-  return GulpClient.src('fixtures/*.url')
-    .pipe(url2qr())
+  return GulpClient.src('fixtures/*.svg', { encoding: false })
+    .pipe(sharp2((sharpObject) => sharpObject
+      .resize({ width: 600 })
+      .toColorspace('b-w')
+      .png({
+        compressionLevel: 9,
+        colors: 2
+      }),
+      {
+        sharpOptions: {
+          density: 600,
+          ignoreIcc: true
+        }
+      }
+    ))
+    .pipe(rename({ extname: '.png' }))
     .pipe(GulpClient.dest('output'));
 };
-task1.description = 'Test gulp task for creating PNG QR codes';
+task1.description = 'Test gulp task for converting SVG to monochrome PNG';
 GulpClient.task(task1);
+
 ```
 
-.url files — INI files. For example:
+Source SVG image:
 
-```ini file=./fixtures/test-file.url
-[{000214A0-0000-0000-C000-000000000046}]
-Prop3=19,2
-[InternetShortcut]
-URL=https://github.com/IT-Service-NPM/gulp-file2qr
-```
+[![Source SVG](./fixtures/test-file.svg)](./fixtures/test-file.svg)
 
-QRCode:
+Output PNG image:
 
-[![QRCode](./output/test-file.png)](./output/test-file.png)
+[![Output PNG](./output/test-file.png)](./output/test-file.png)

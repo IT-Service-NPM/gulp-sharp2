@@ -20,5 +20,8 @@ export default defineConfig({
       junit: 'test/results/junit-report.xml',
       json: 'test/results/json-report.json',
     },
+    setupFiles: [
+      '@altano/vitest-plugins/matchers'
+    ],
   },
 });

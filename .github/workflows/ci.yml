@@ -49,7 +49,7 @@ jobs:
     outputs:
       package-json: ${{ steps.read-package-json.outputs.result }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
@@ -96,7 +96,7 @@ jobs:
         run: npm pack
 
       - name: Upload package tarball
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: Package tarball
           path: ${{fromJson(steps.read-package-json.outputs.result).name}}-${{fromJson(steps.read-package-json.outputs.result).version}}.tgz
@@ -118,7 +118,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
@@ -163,14 +163,14 @@ jobs:
 
       - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: Test Results (OS ${{ matrix.os }} - Node.js ${{ matrix.node-version }})
           path: test/results/junit-report.xml
 
       - name: Upload Test Coverage
         if: matrix.main-test-environment
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: Coverage
           path: coverage/coverage-summary.json
@@ -196,8 +196,12 @@ jobs:
 
     steps:
 
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           path: test/results
 
@@ -209,7 +213,7 @@ jobs:
 
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: Coverage
           path: coverage
@@ -251,13 +255,13 @@ jobs:
 
 
       - name: Upload Test Results Badge
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: tests.svg
           path: ${{ fromJSON( needs.build.outputs.package-json).name }}-tests.svg
 
       - name: Upload Test Coverage Badge
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: coverage.svg
           path: ${{ fromJSON( needs.build.outputs.package-json).name }}-coverage.svg
@@ -299,10 +303,9 @@ jobs:
       id-token: write
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup NodeJS latest
-        # изменения ради фиксации
         id: setup-node
         uses: actions/setup-node@v6
         with:
@@ -360,58 +363,6 @@ jobs:
         id: release-to-GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          branches: main
-          # preset: "angular"
-          # https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular
-          # https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit-message-footer
-          additional-packages: |
-            [ '@semantic-release/git', '@semantic-release/changelog' ]
-          plugins: |
-            [
-              ["@semantic-release/commit-analyzer", {
-                "preset": "angular"
-              }],
-              [
-                "@semantic-release/release-notes-generator",
-                {
-                  "preset": "conventionalcommits",
-                  "presetConfig": {
-                    "types": [
-                      { type: 'feat', section: 'Features', hidden: false },
-                      { type: 'fix', section: 'Bug Fixes', hidden: false },
-                      { type: 'perf', section: 'Performance Improvements', hidden: false },
-                      { type: 'revert', section: 'Reverts', hidden: false },
-                      { type: 'docs', section: 'Other Updates', hidden: true },
-                      { type: 'style', section: 'Other Updates', hidden: true },
-                      { type: 'chore', section: 'Other Updates', hidden: true },
-                      { type: 'refactor', section: 'Other Updates', hidden: false },
-                      { type: 'test', section: 'Other Updates', hidden: false },
-                      { type: 'build', section: 'Other Updates', hidden: false },
-                      { type: 'ci', section: 'Other Updates', hidden: false }
-                    ]
-                  }
-                }
-              ],
-              "@semantic-release/changelog",
-              [
-                "@semantic-release/npm",
-                {
-                  "npmPublish": false
-                }
-              ],
-              "@semantic-release/github",
-              ["@semantic-release/git", {
-                "assets": [
-                  "package.json",
-                  "CHANGELOG.md",
-                  "docs/*.md",
-                  "readme.md",
-                  "test/examples/**/readme.md"
-                ],
-                "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-              }]
-            ]
 
   deploy-to-npmJS:
     environment: npm
@@ -430,7 +381,7 @@ jobs:
       id-token: write
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup NodeJS latest
         id: setup-node
@@ -484,9 +435,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           branches: main
-          # preset: "angular"
-          # https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular
-          # https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit-message-footer
           plugins: |
             [
               ["@semantic-release/commit-analyzer", {
