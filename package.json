@@ -1,7 +1,7 @@
 {
   "name": "gulp-sharp2",
   "type": "module",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A Gulp plugin for images processing with Sharp",
   "keywords": [
     "gulpplugin",

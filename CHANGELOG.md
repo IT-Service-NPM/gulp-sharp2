@@ -11,6 +11,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/IT-Service-NPM/gulp-sharp2/compare/v1.1.0...v1.1.1) (2026-01-09)
+
+
+### Bug Fixes
+
+* add debug log messages ([0ca974d](https://github.com/IT-Service-NPM/gulp-sharp2/commit/0ca974dc4e5914be0dfb3fc4f27e7bef9dc0d1e6))
+
 # [1.1.0](https://github.com/IT-Service-NPM/gulp-sharp2/compare/v1.0.0...v1.1.0) (2026-01-09)
 
 
