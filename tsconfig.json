@@ -32,7 +32,7 @@
     // "exactOptionalPropertyTypes": true,
     "allowImportingTsExtensions": true,
     "types": [
-      // "vitest/globals",
+      "vitest/globals",
       // "@altano/vitest-plugins/matchers"
     ],
   }

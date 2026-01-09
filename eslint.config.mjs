@@ -85,9 +85,9 @@ export default [
       }
     },
     languageOptions: {
-      // globals: {
-      //   ...vitest.environments.env.globals,
-      // },
+      globals: {
+        ...vitest.environments.env.globals,
+      },
     }
   },
 ];

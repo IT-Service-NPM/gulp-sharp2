@@ -7,6 +7,7 @@ export default defineConfig({
     vitestTypescriptAssertPlugin()
   ],
   test: {
+    globals: true,
     coverage: {
       provider: 'istanbul',
       reporter: ['text', 'json-summary', 'json', 'lcov'],
