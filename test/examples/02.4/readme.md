@@ -11,7 +11,6 @@ function task1() {
 };
 task1.description = 'Test gulp task for converting JPEG to WebP';
 GulpClient.task(task1);
-
 ```
 
 Source and output images:
