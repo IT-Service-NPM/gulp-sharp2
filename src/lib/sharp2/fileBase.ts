@@ -4,7 +4,32 @@ import { callbackify } from 'util';
 import PluginError from 'plugin-error';
 import GulpFile, { type BufferFile } from 'vinyl';
 
-const PLUGIN_NAME = 'gulp-file2qr';
+/**
+ * Gulp plugin base class
+ *
+ * @public @internal
+ */
+export abstract class Plugin extends Transform<GulpFile> {
+
+  /**
+   * @internal
+   */
+  protected constructor(
+    protected readonly pluginName: string
+  ) {
+    super();
+  };
+
+  /**
+  * return gulp plugin, compatible with `.pipe`
+  *
+  * @public @internal
+  */
+  public getPlugin(): NodeJS.ReadWriteStream {
+    return this as unknown as NodeJS.ReadWriteStream;
+  };
+
+};
 
 /**
  * Gulp plugin base transform stream,
@@ -12,7 +37,7 @@ const PLUGIN_NAME = 'gulp-file2qr';
  *
  * @public @internal
  */
-export abstract class GulpFile2BufferFile extends Transform<GulpFile> {
+export abstract class GulpFile2BufferFile extends Plugin {
 
   /**
    * @internal
@@ -33,7 +58,7 @@ export abstract class GulpFile2BufferFile extends Transform<GulpFile> {
       const fileContents = Buffer.concat(chunks);
       return fileContents;
     };
-    throw new PluginError(PLUGIN_NAME,
+    throw new PluginError(this.pluginName,
       `Null GulpFile processing does not supported (${file.path})`
     );
   };
@@ -61,7 +86,7 @@ export abstract class GulpFile2BufferFile extends Transform<GulpFile> {
         return await this._transform2BufferFile(fileContent, file);
       } catch (error) {
         throw (error instanceof PluginError) ? error as PluginError :
-          new PluginError(PLUGIN_NAME,
+          new PluginError(this.pluginName,
             error instanceof Error ? error : error as string);
       };
     })(callback);

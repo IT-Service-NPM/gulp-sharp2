@@ -14,8 +14,6 @@ import GulpFile, { type BufferFile } from 'vinyl';
 import { GulpFile2BufferFile } from './fileBase.ts';
 import sharp, { type Sharp, type SharpOptions } from 'sharp';
 
-// const PLUGIN_NAME = 'gulp-sharp2';
-
 /**
  * {@link sharp2} plugin options
  *
@@ -80,7 +78,8 @@ export class GulpFileTransformWithSharp extends GulpFile2BufferFile {
    * @internal
    */
   constructor(process: Process, options?: Options) {
-    super();
+    // TODO: использовать макросы tsc / ebuild для чтения из package.json
+    super('gulp-sharp2');
     this.process = process;
     const optionsDefaults: Options = {
       sharpOptions: {
@@ -140,5 +139,5 @@ export function sharp2(
   return new GulpFileTransformWithSharp(
     process,
     options
-  ) as unknown as NodeJS.ReadWriteStream;
+  ).getPlugin();
 };
