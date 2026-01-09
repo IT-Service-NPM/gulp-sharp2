@@ -14,10 +14,7 @@ GulpClient.task(task1);
 
 ```
 
-Source image:
+Source and output images:
 
 [![Source image](./fixtures/test-file.png)](./fixtures/test-file.png)
-
-Output JPEG image:
-
 [![Output image](./output/test-file.jpeg)](./output/test-file.jpeg)

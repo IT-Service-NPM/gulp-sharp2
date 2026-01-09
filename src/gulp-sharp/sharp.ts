@@ -11,7 +11,12 @@
  */
 
 import GulpFile, { type BufferFile } from 'vinyl';
-import { type JpegOptions } from 'sharp';
+import {
+  type JpegOptions,
+  type PngOptions,
+  type TiffOptions,
+  type WebpOptions
+} from 'sharp';
 import {
   GulpFileTransformWithSharp,
   type Options,
@@ -65,5 +70,62 @@ export function jpeg(options?: JpegOptions) {
   return new ImageConverter(
     '.jpeg',
     (sharpObject) => sharpObject.jpeg(options)
+  ).getPlugin();
+};
+
+/**
+ * Returns Gulp plugin for convert
+ * images with
+ * {@link https://www.npmjs.com/package/sharp| Sharp}
+ * to PNG.
+ *
+ * @param options - PngOptions for
+ * {@link https://www.npmjs.com/package/sharp| Sharp}
+ * .png method
+ *
+ * @public
+ */
+export function png(options?: PngOptions) {
+  return new ImageConverter(
+    '.png',
+    (sharpObject) => sharpObject.png(options)
+  ).getPlugin();
+};
+
+/**
+ * Returns Gulp plugin for convert
+ * images with
+ * {@link https://www.npmjs.com/package/sharp| Sharp}
+ * to TIFF.
+ *
+ * @param options - TiffOptions for
+ * {@link https://www.npmjs.com/package/sharp| Sharp}
+ * .tiff method
+ *
+ * @public
+ */
+export function tiff(options?: TiffOptions) {
+  return new ImageConverter(
+    '.tiff',
+    (sharpObject) => sharpObject.tiff(options)
+  ).getPlugin();
+};
+
+/**
+ * Returns Gulp plugin for convert
+ * images with
+ * {@link https://www.npmjs.com/package/sharp| Sharp}
+ * to WebP.
+ *
+ * @param options - WebpOptions for
+ * {@link https://www.npmjs.com/package/sharp| Sharp}
+ * .webp method
+ *
+ * @public
+ */
+export function webp(options?: WebpOptions) {
+  return new ImageConverter(
+    '.webp',
+    (sharpObject) => sharpObject.webp(options)
   ).getPlugin();
 };

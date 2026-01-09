@@ -8,13 +8,13 @@ import './gulpfile.ts';
 // const testSrcFilesPath: string = path.join(__dirname, 'fixtures');
 const testDestFilesPath: string = path.join(__dirname, 'output');
 
-describe('sharp2', () => {
+describe('png', () => {
 
   beforeEach(() => {
     fs.rmSync(testDestFilesPath, { force: true, recursive: true });
   });
 
-  it('must transform PNG image', async () => {
+  it('must convert JPEG image to PNG', async () => {
     const _cwd = process.cwd();
     try {
       process.chdir(__dirname);
@@ -30,8 +30,8 @@ describe('sharp2', () => {
       `Output directory must be exists: "${testDestFilesPath}"`
     ).toBeTruthy();
 
-    // const testSrcFilePath = path.join(testSrcFilesPath, 'test-file.png');
-    const testDestFilePath = path.join(testDestFilesPath, 'test-file.jpeg');
+    // const testSrcFilePath = path.join(testSrcFilesPath, 'test-file.jpeg');
+    const testDestFilePath = path.join(testDestFilesPath, 'test-file.png');
     expect(
       fs.existsSync(testDestFilePath),
       `Output file expected: "${testDestFilePath}"`

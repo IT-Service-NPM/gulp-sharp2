@@ -64,6 +64,9 @@ and other gulp plugins for images processing with
   * [Convert SVG to monochrome PNG](#convert-svg-to-monochromepng)
   * [Replace @forward-software/gulp-sharp plugin](#replace-forward-softwaregulp-sharp-plugin)
     * [Convert images to JPEG format](#convert-images-to-jpegformat)
+    * [Convert images to PNG format](#convert-images-to-pngformat)
+    * [Convert images to TIFF format](#convert-images-to-tiffformat)
+    * [Convert images to WebP format](#convert-images-to-webpformat)
 * [API](#api)
 * [License](#license)
 
@@ -124,7 +127,7 @@ plugin.
 
 #### Convert images to JPEG format
 
-```typescript file=./test/examples/02/gulpfile.ts
+```typescript file=./test/examples/02.1/gulpfile.ts
 import { jpeg as gulpJpeg } from '#gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
@@ -138,13 +141,73 @@ GulpClient.task(task1);
 
 ```
 
-Source image:
+Source and output images:
 
-[![Source image](./test/examples/02/fixtures/test-file.png)](./test/examples/02/fixtures/test-file.png)
+[![Source image](./test/examples/02.1/fixtures/test-file.png)](./test/examples/02.1/fixtures/test-file.png)
+[![Output image](./test/examples/02.1/output/test-file.jpeg)](./test/examples/02.1/output/test-file.jpeg)
 
-Output JPEG image:
+#### Convert images to PNG format
 
-[![Output image](./test/examples/02/output/test-file.jpeg)](./test/examples/02/output/test-file.jpeg)
+```typescript file=./test/examples/02.2/gulpfile.ts
+import { png } from '#gulp-sharp2/gulp-sharp';
+import GulpClient from 'gulp';
+
+function task1() {
+  return GulpClient.src('fixtures/*.jpeg', { encoding: false })
+    .pipe(png({ palette: true }))
+    .pipe(GulpClient.dest('output'));
+};
+task1.description = 'Test gulp task for converting JPEG to PNG';
+GulpClient.task(task1);
+
+```
+
+Source and output images:
+
+[![Source image](./test/examples/02.2/fixtures/test-file.jpeg)](./test/examples/02.2/fixtures/test-file.jpeg)
+[![Output image](./test/examples/02.2/output/test-file.png)](./test/examples/02.2/output/test-file.png)
+
+#### Convert images to TIFF format
+
+```typescript file=./test/examples/02.3/gulpfile.ts
+import { tiff } from '#gulp-sharp2/gulp-sharp';
+import GulpClient from 'gulp';
+
+function task1() {
+  return GulpClient.src('fixtures/*.png', { encoding: false })
+    .pipe(tiff({ quality: 90 }))
+    .pipe(GulpClient.dest('output'));
+};
+task1.description = 'Test gulp task for converting PNG to TIFF';
+GulpClient.task(task1);
+
+```
+
+Source and output images:
+
+[![Source image](./test/examples/02.3/fixtures/test-file.png)](./test/examples/02.3/fixtures/test-file.png)
+[![Output image](./test/examples/02.3/output/test-file.tiff)](./test/examples/02.3/output/test-file.tiff)
+
+#### Convert images to WebP format
+
+```typescript file=./test/examples/02.4/gulpfile.ts
+import { webp } from '#gulp-sharp2/gulp-sharp';
+import GulpClient from 'gulp';
+
+function task1() {
+  return GulpClient.src('fixtures/*.jpeg', { encoding: false })
+    .pipe(webp({ preset: 'drawing' }))
+    .pipe(GulpClient.dest('output'));
+};
+task1.description = 'Test gulp task for converting JPEG to WebP';
+GulpClient.task(task1);
+
+```
+
+Source and output images:
+
+[![Source image](./test/examples/02.4/fixtures/test-file.jpeg)](./test/examples/02.4/fixtures/test-file.jpeg)
+[![Output image](./test/examples/02.4/output/test-file.webp)](./test/examples/02.4/output/test-file.webp)
 
 ## API
 
