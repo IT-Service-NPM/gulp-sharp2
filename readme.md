@@ -52,14 +52,18 @@
 
 [coverage-url]: https://github.com/IT-Service-NPM/gulp-sharp2/actions/workflows/ci.yml
 
-This plugin is a modern version of `gulp-sharp`
-and other gulp plugins for images processing with `sharp`.
+This plugin is a modern version of
+[`@forward-software/gulp-sharp`](https://www.npmjs.com/package/@forward-software/gulp-sharp)
+and other gulp plugins for images processing with
+[`sharp`](https://www.npmjs.com/package/sharp).
 
 ## Contents
 
 * [Install](#install)
 * [Examples](#examples)
   * [Convert SVG to monochrome PNG](#convert-svg-to-monochromepng)
+  * [Replace @forward-software/gulp-sharp plugin](#replace-forward-softwaregulp-sharp-plugin)
+    * [Convert images to JPEG format](#convert-images-to-jpegformat)
 * [API](#api)
 * [License](#license)
 
@@ -101,6 +105,7 @@ function task1() {
 };
 task1.description = 'Test gulp task for converting SVG to monochrome PNG';
 GulpClient.task(task1);
+
 ```
 
 Source SVG image:
@@ -110,6 +115,36 @@ Source SVG image:
 Output PNG image:
 
 [![Output PNG](./test/examples/01/output/test-file.png)](./test/examples/01/output/test-file.png)
+
+### Replace @forward-software/gulp-sharp plugin
+
+This plugin provides interface, compatible with
+[`@forward-software/gulp-sharp`](https://www.npmjs.com/package/@forward-software/gulp-sharp)
+plugin.
+
+#### Convert images to JPEG format
+
+```typescript file=./test/examples/02/gulpfile.ts
+import { jpeg as gulpJpeg } from '#gulp-sharp2/gulp-sharp';
+import GulpClient from 'gulp';
+
+function task1() {
+  return GulpClient.src('fixtures/*.png', { encoding: false })
+    .pipe(gulpJpeg({ quality: 90 }))
+    .pipe(GulpClient.dest('output'));
+};
+task1.description = 'Test gulp task for converting PNG to JPEG';
+GulpClient.task(task1);
+
+```
+
+Source image:
+
+[![Source image](./test/examples/02/fixtures/test-file.png)](./test/examples/02/fixtures/test-file.png)
+
+Output JPEG image:
+
+[![Output image](./test/examples/02/output/test-file.jpeg)](./test/examples/02/output/test-file.jpeg)
 
 ## API
 

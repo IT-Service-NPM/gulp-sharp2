@@ -4,6 +4,8 @@ import { callbackify } from 'util';
 import PluginError from 'plugin-error';
 import GulpFile, { type BufferFile } from 'vinyl';
 
+export type gulpPlugin = NodeJS.ReadWriteStream;
+
 /**
  * Gulp plugin base class
  *
@@ -25,8 +27,8 @@ export abstract class Plugin extends Transform<GulpFile> {
   *
   * @public @internal
   */
-  public getPlugin(): NodeJS.ReadWriteStream {
-    return this as unknown as NodeJS.ReadWriteStream;
+  public getPlugin(): gulpPlugin {
+    return this as unknown as gulpPlugin;
   };
 
 };

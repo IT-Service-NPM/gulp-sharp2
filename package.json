@@ -40,10 +40,21 @@
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
+    },
+    "./gulp-sharp": {
+      "import": {
+        "types": "./dist/gulp-sharp/index.d.ts",
+        "default": "./dist/gulp-sharp/index.js"
+      },
+      "require": {
+        "types": "./dist/gulp-sharp/index.d.cts",
+        "default": "./dist/gulp-sharp/index.cjs"
+      }
     }
   },
   "imports": {
-    "#gulp-sharp2": "./src/index.ts"
+    "#gulp-sharp2": "./src/index.ts",
+    "#gulp-sharp2/gulp-sharp": "./src/gulp-sharp/index.ts"
   },
   "files": [
     "dist"

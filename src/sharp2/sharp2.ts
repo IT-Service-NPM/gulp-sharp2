@@ -11,7 +11,7 @@
  */
 
 import GulpFile, { type BufferFile } from 'vinyl';
-import { GulpFile2BufferFile } from './fileBase.ts';
+import { GulpFile2BufferFile } from '../lib/fileBase.ts';
 import sharp, { type Sharp, type SharpOptions } from 'sharp';
 
 /**
@@ -135,7 +135,7 @@ export class GulpFileTransformWithSharp extends GulpFile2BufferFile {
 export function sharp2(
   process: Process,
   options?: Options
-): NodeJS.ReadWriteStream {
+) {
   return new GulpFileTransformWithSharp(
     process,
     options
