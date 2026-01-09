@@ -11,7 +11,6 @@ function task1() {
 };
 task1.description = 'Test gulp task for converting PNG to JPEG';
 GulpClient.task(task1);
-
 ```
 
 Source and output images:
