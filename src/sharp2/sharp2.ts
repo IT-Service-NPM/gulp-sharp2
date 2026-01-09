@@ -10,9 +10,11 @@
  * @packageDocumentation
  */
 
+import path from 'node:path';
 import GulpFile, { type BufferFile } from 'vinyl';
 import { GulpFile2BufferFile } from '../lib/fileBase.ts';
 import sharp, { type Sharp, type SharpOptions } from 'sharp';
+import logger from 'gulplog';
 
 /**
  * {@link sharp2} plugin options
@@ -97,11 +99,30 @@ export class GulpFileTransformWithSharp extends GulpFile2BufferFile {
     fileContent: Buffer, sourceFile: GulpFile
   ): Promise<BufferFile> {
     const outputFile = sourceFile.clone();
+    const sourceFilePathInfo = path.relative(
+      sourceFile.base,
+      path.join(sourceFile.path, sourceFile.basename)
+    );
+    logger.debug(
+      '%s: sharp object creation for %s',
+      this.pluginName,
+      sourceFilePathInfo
+    );
     const sharpObject = sharp(
       fileContent,
       this.options.sharpOptions
     );
+    logger.debug(
+      '%s: sharp processing start for %s',
+      this.pluginName,
+      sourceFilePathInfo
+    );
     outputFile.contents = await this.process(sharpObject).toBuffer();
+    logger.debug(
+      '%s: sharp processing finish for %s',
+      this.pluginName,
+      sourceFilePathInfo
+    );
     return outputFile as BufferFile;
   };
 

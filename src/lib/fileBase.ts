@@ -16,10 +16,16 @@ export abstract class Plugin extends Transform<GulpFile> {
   /**
    * @internal
    */
+  protected readonly pluginName: string;
+
+  /**
+ * @internal
+ */
   protected constructor(
-    protected readonly pluginName: string
+    pluginName: string
   ) {
     super();
+    this.pluginName = pluginName;
   };
 
   /**
