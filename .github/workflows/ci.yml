@@ -34,6 +34,7 @@ on:
       force-npmJS-deployment:
         required: false
         type: boolean
+        default: false
         description: Always deploy to npmJS repository if successfully builded
 
 concurrency:
@@ -295,9 +296,7 @@ jobs:
     needs:
       - build
       - tests
-    if: >
-      github.event_name == 'workflow_run' ||
-      github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     permissions:
       actions: read
