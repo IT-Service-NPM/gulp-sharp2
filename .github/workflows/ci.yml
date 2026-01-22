@@ -35,7 +35,7 @@ on:
         required: false
         type: boolean
         default: false
-        description: Always deploy to npmJS repository if successfully builded
+        description: force deployment to npmJS repository (just if successfully build)
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -382,4 +382,6 @@ jobs:
       pull-requests: write
       id-token: write
     uses: IT-Service-NPM/.github/.github/workflows/deploy-to-npmJS.yml@main
+    with:
+      force: ${{ inputs.force-npmJS-deployment }}
     secrets: inherit
