@@ -368,7 +368,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy-to-npmJS:
+  npmJS:
     needs:
       - build
       - tests
