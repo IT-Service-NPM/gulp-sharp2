@@ -1,0 +1,30 @@
+name: Build NPM package from sources
+
+on:
+
+  workflow_dispatch:
+    inputs:
+      ignore-cache:
+        required: false
+        type: boolean
+        default: false
+        description: build without cache
+
+  workflow_call:
+    inputs:
+      ignore-cache:
+        required: false
+        type: boolean
+        default: false
+        description: build without node_modules cache
+
+concurrency:
+  group: ${{ github.repository }}/${{ github.ref }}/${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: IT-Service-NPM/.github/.github/workflows/build-npm-package.yml@main
+    with:
+      ignore-cache: ${{ inputs.ignore-cache }}
+    secrets: inherit
