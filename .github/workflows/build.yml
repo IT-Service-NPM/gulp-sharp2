@@ -18,10 +18,6 @@ on:
         default: false
         description: build without node_modules cache
 
-concurrency:
-  group: ${{ github.repository }}/${{ github.ref }}/${{ github.workflow }}
-  cancel-in-progress: true
-
 jobs:
   build:
     uses: IT-Service-NPM/.github/.github/workflows/build-npm-package.yml@main
