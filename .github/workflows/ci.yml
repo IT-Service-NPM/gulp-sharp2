@@ -36,12 +36,10 @@ on:
       ignore-cache:
         required: false
         type: boolean
-        default: false
         description: build without cache
       force-npmJS-deployment:
         required: false
         type: boolean
-        default: false
         description: force deployment to npmJS repository (just if successfully build)
 
 concurrency:
