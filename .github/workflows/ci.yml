@@ -16,6 +16,7 @@ on:
       - 'api-extractor.json'
       - 'readme.md'
       - '.github/workflows/ci.yml'
+      - '.github/workflows/build-*.yml'
   push:
     paths:
       - 'src/**'
@@ -28,6 +29,7 @@ on:
       - 'api-extractor.json'
       - 'readme.md'
       - '.github/workflows/ci.yml'
+      - '.github/workflows/build-*.yml'
 
   workflow_dispatch:
     inputs:
@@ -58,7 +60,7 @@ jobs:
     permissions:
       actions: read
       contents: read
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/build-package.yml
     with:
       ignore-cache: ${{ inputs.ignore-cache }}
     secrets: inherit
