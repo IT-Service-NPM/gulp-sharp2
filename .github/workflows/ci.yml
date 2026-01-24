@@ -98,7 +98,7 @@ jobs:
           key: OS:${{ matrix.os }}:Node:${{ matrix.node-version }}:package.json:${{hashFiles('package.json')}}
 
       - name: Install dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
+        if: ${{ steps.cache-deps.outputs.cache-hit != 'true' }}
         run: npm install
 
       - name: Cache package dist
@@ -109,14 +109,15 @@ jobs:
           key: package-dist-${{github.run_id}}
 
       - name: Build
-        if: steps.cache-dist.outputs.cache-hit != 'true'
+        if: ${{ steps.cache-dist.outputs.cache-hit != 'true' }}
         run: npm run build
 
       - name: Linting
-        if: matrix.main-test-environment
+        if: ${{ matrix.main-test-environment == 'true' }}
         run: npm run lint
 
       # - name: Check module exports
+      # TODO: Check module exports
       #   if: matrix.main-test-environment
       #   run: npm run check-exports
 
@@ -124,21 +125,21 @@ jobs:
         run: npm run test
 
       - name: Upload Test Results
-        if: always()
+        if: ${{ always() }}
         uses: actions/upload-artifact@v6
         with:
           name: Test Results (OS ${{ matrix.os }} - Node.js ${{ matrix.node-version }})
           path: test/results/junit-report.xml
 
       - name: Upload Test Coverage
-        if: matrix.main-test-environment
+        if: ${{ matrix.main-test-environment }}
         uses: actions/upload-artifact@v6
         with:
           name: Coverage
           path: coverage/coverage-summary.json
 
       - name: Report Coverage
-        if: matrix.main-test-environment
+        if: ${{ matrix.main-test-environment }}
         uses:  davelosert/vitest-coverage-report-action@v2
         with:
           file-coverage-mode: all
@@ -154,7 +155,7 @@ jobs:
       pull-requests: write
       contents: read
       issues: read
-    if: always()
+    if: ${{ always() }}
 
     steps:
 
@@ -242,7 +243,7 @@ jobs:
           path: ${{ fromJSON( steps.test-results.outputs.json ).name }}-coverage.svg
 
       - name: Upload Test Results Badge to Gist
-        if: github.ref_name == 'main'
+        if: ${{ github.ref_name == 'main' }}
         uses: andymckay/append-gist-action@ab30bf28df67017c7ad696500b218558c7c04db3
         with:
           token: ${{ secrets.GIST_TOKEN }}
@@ -250,7 +251,7 @@ jobs:
           file: ${{ fromJSON( steps.test-results.outputs.json ).name }}-tests.svg
 
       - name: Upload Test Coverage Badge to Gist
-        if: github.ref_name == 'main'
+        if: ${{ github.ref_name == 'main' }}
         uses: andymckay/append-gist-action@ab30bf28df67017c7ad696500b218558c7c04db3
         with:
           token: ${{ secrets.GIST_TOKEN }}
@@ -265,7 +266,7 @@ jobs:
     needs:
       - build
       - tests
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -292,7 +293,7 @@ jobs:
           key: OS:ubuntu-latest:Node:latest:package.json:${{hashFiles('package.json')}}
 
       - name: Install dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
+        if: ${{ steps.cache-deps.outputs.cache-hit != 'true' }}
         run: npm install
 
       - name: Cache package dist
@@ -303,7 +304,7 @@ jobs:
           key: package-dist-${{github.run_id}}
 
       - name: Build
-        if: steps.cache-dist.outputs.cache-hit != 'true'
+        if: ${{ steps.cache-dist.outputs.cache-hit != 'true' }}
         run: npm run build
 
       - name: Update API documentation
