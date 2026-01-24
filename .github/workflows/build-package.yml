@@ -23,5 +23,5 @@ jobs:
       contents: read
     uses: IT-Service-NPM/.github/.github/workflows/build-npm-package.yml@main
     with:
-      ignore-cache: ${{ inputs.ignore-cache }}
+      ignore-cache: ${{ inputs.ignore-cache == 'true' }}
     secrets: inherit
