@@ -11,6 +11,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/IT-Service-NPM/gulp-sharp2/compare/v1.1.1...v1.1.2) (2026-01-25)
+
+
+### Bug Fixes
+
+* **deps:** fix linter and audit warnings ([897c2b1](https://github.com/IT-Service-NPM/gulp-sharp2/commit/897c2b11d515cc7a223a8550fda33f7f7c2d5331))
+
 ## [1.1.1](https://github.com/IT-Service-NPM/gulp-sharp2/compare/v1.1.0...v1.1.1) (2026-01-09)
 
 
