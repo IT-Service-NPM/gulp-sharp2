@@ -12,19 +12,19 @@ import codeImport from 'remark-code-import';
 import remarkToc from 'remark-toc';
 
 export default {
-	plugins: [
-		codeImport,
-		remarkToc,
-		remarkLicense,
-		remarkGfm,
-		remarkAlert,
-		remarkValidateLinks,
-		remarkTypography,
-		remarkPresetLintConsistent,
-		remarkPresetLintRecommended,
-		remarkLintCodeBlockStyle,
-	],
-	settings: {
-		bullet: '*'
-	}
+  plugins: [
+    codeImport,
+    remarkToc,
+    remarkLicense,
+    remarkGfm,
+    remarkAlert,
+    remarkValidateLinks,
+    remarkTypography,
+    remarkPresetLintConsistent,
+    remarkPresetLintRecommended,
+    remarkLintCodeBlockStyle,
+  ],
+  settings: {
+    bullet: '*'
+  }
 }
