@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file. See
 
 * add debug log messages ([0ca974d](https://github.com/IT-Service-NPM/gulp-sharp2/commit/0ca974dc4e5914be0dfb3fc4f27e7bef9dc0d1e6))
 
-# [1.1.0](https://github.com/IT-Service-NPM/gulp-sharp2/compare/v1.0.0...v1.1.0) (2026-01-09)
+## [1.1.0](https://github.com/IT-Service-NPM/gulp-sharp2/compare/v1.0.0...v1.1.0) (2026-01-09)
 
 
 ### Features
@@ -26,7 +26,7 @@ All notable changes to this project will be documented in this file. See
 * add `jpeg` plugin ([4a13d11](https://github.com/IT-Service-NPM/gulp-sharp2/commit/4a13d1166259676ca8544736a872342d8bf598df)), closes [#13](https://github.com/IT-Service-NPM/gulp-sharp2/issues/13)
 * add png, tiff, webp ([cb84fbe](https://github.com/IT-Service-NPM/gulp-sharp2/commit/cb84fbe0c15a951d934f554016c191cb18e463fa)), closes [#13](https://github.com/IT-Service-NPM/gulp-sharp2/issues/13)
 
-# 1.0.0 (2026-01-08)
+## 1.0.0 (2026-01-08)
 
 
 ### Bug Fixes
