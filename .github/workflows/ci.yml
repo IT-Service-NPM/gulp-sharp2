@@ -58,7 +58,7 @@ jobs:
     permissions:
       actions: read
       contents: read
-    uses: ./.github/workflows/build-package.yml
+    uses: ./.github/workflows/compile-package.yml
     with:
       ignore-cache: ${{ inputs.ignore-cache =='true' }}
     secrets: inherit

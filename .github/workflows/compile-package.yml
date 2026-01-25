@@ -1,4 +1,4 @@
-name: Build NPM package from sources
+name: Compile 'dist' from sources
 
 on:
 
@@ -21,7 +21,7 @@ jobs:
     permissions:
       actions: read
       contents: read
-    uses: IT-Service-NPM/.github/.github/workflows/build-npm-package.yml@main
+    uses: IT-Service-NPM/.github/.github/workflows/compile-npm-package.yml@main
     with:
       ignore-cache: ${{ inputs.ignore-cache }}
     secrets: inherit
