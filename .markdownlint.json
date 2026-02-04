@@ -6,5 +6,6 @@
 	"line-length": true,
 	"no-duplicate-heading": false,
 	"no-bare-urls": false,
-	"no-hard-tabs": false
+	"no-hard-tabs": false,
+	"first-line-h1": false
 }

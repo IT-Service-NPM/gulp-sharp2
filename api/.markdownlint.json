@@ -1,4 +1,4 @@
 {
-  "extends": "./.markdownlint.json",
-  "first-line-h1": false
+	"extends": "./.markdownlint.json",
+	"first-line-h1": false
 }

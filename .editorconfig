@@ -20,6 +20,10 @@ indent_style = space
 indent_size = 2
 end_of_line = lf
 
+; fix linting error for generated files
+[docs/**/*.md]
+trim_trailing_whitespace = false
+
 [{LICENSE,NOTICE}]
 indent_style = space
 indent_size = 2
