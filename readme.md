@@ -44,11 +44,11 @@
 
 [build-url]: https://github.com/IT-Service-NPM/gulp-sharp2/actions/workflows/ci.yml
 
-[tests]: https://gist.githubusercontent.com/sergey-s-betke/d70e4de09a490afc9fb7a737363b231a/raw/gulp-sharp2-tests.svg
+[tests]: https://img.shields.io/endpoint?logo=vitest&url=https%3A%2F%2Fgist.githubusercontent.com%2Fsergey-s-betke%2Fd70e4de09a490afc9fb7a737363b231a%2Fraw%2Fgulp-sharp2-junit-tests.json
 
 [tests-url]: https://github.com/IT-Service-NPM/gulp-sharp2/actions/workflows/ci.yml
 
-[coverage]: https://gist.githubusercontent.com/sergey-s-betke/d70e4de09a490afc9fb7a737363b231a/raw/gulp-sharp2-coverage.svg
+[coverage]: https://img.shields.io/endpoint?logo=vitest&url=https%3A%2F%2Fgist.githubusercontent.com%2Fsergey-s-betke%2Fd70e4de09a490afc9fb7a737363b231a%2Fraw%2Fgulp-sharp2-lcov-coverage.json
 
 [coverage-url]: https://github.com/IT-Service-NPM/gulp-sharp2/actions/workflows/ci.yml
 
@@ -59,16 +59,18 @@ and other gulp plugins for images processing with
 
 ## Contents
 
-* [Install](#install)
-* [Examples](#examples)
-  * [Convert SVG to monochrome PNG](#convert-svg-to-monochromepng)
-  * [Replace @forward-software/gulp-sharp plugin](#replace-forward-softwaregulp-sharp-plugin)
-    * [Convert images to JPEG format](#convert-images-to-jpegformat)
-    * [Convert images to PNG format](#convert-images-to-pngformat)
-    * [Convert images to TIFF format](#convert-images-to-tiffformat)
-    * [Convert images to WebP format](#convert-images-to-webpformat)
-* [API](#api)
-* [License](#license)
+- [gulp-sharp2](#gulp-sharp2)
+  - [Contents](#contents)
+  - [Install](#install)
+  - [Examples](#examples)
+    - [Convert SVG to monochrome PNG](#convert-svg-to-monochromepng)
+    - [Replace @forward-software/gulp-sharp plugin](#replace-forward-softwaregulp-sharp-plugin)
+      - [Convert images to JPEG format](#convert-images-to-jpegformat)
+      - [Convert images to PNG format](#convert-images-to-pngformat)
+      - [Convert images to TIFF format](#convert-images-to-tiffformat)
+      - [Convert images to WebP format](#convert-images-to-webpformat)
+  - [API](#api)
+  - [License](#license)
 
 ## Install
 
