@@ -24,7 +24,7 @@
 	},
 	"license": "MIT",
 	"engines": {
-		"node": ">=20.0"
+		"node": ">=22.0"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
@@ -67,7 +67,7 @@
 		"test": "vitest run --coverage",
 		"update-readme-API": "npx api-extractor run --local && npx api-documenter markdown -i ./temp -o ./docs",
 		"update-examples-readme": "remark test/examples/*/readme.md --output",
-		"update-main-readme": "remark readme.md --output",
+		"update-main-readme": "remark .readme.md --output README.md",
 		"update-readme": "npm run update-examples-readme && npm run update-main-readme",
 		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
 	},
@@ -86,6 +86,7 @@
 		"@commitlint/types": "^20.2.0",
 		"@eslint/eslintrc": "^3.1.0",
 		"@eslint/js": "^9.13.0",
+		"@it-service-npm/remark-include": "^4.1.0",
 		"@microsoft/api-documenter": "^7.26.0",
 		"@microsoft/api-extractor": "^7.48.0",
 		"@semantic-release/changelog": "^6.0.3",
@@ -97,6 +98,7 @@
 		"@szum-tech/semantic-release-config": "^2.3.5",
 		"@types/gulp": "^4.0.17",
 		"@types/gulp-rename": "^2.0.7",
+		"@types/node": "^25.2.3",
 		"@typescript-eslint/eslint-plugin": "^8.12.2",
 		"@typescript-eslint/parser": "^8.12.2",
 		"@vitest/coverage-istanbul": "^4.0.16",

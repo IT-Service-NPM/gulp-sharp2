@@ -1,4 +1,4 @@
-### Convert images to TIFF format
+# Convert images to TIFF format
 
 ```typescript file=./gulpfile.ts
 import { tiff } from '#gulp-sharp2/gulp-sharp';

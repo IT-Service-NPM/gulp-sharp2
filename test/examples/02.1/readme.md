@@ -1,4 +1,4 @@
-### Convert images to JPEG format
+# Convert images to JPEG format
 
 ```typescript file=./gulpfile.ts
 import { jpeg as gulpJpeg } from '#gulp-sharp2/gulp-sharp';

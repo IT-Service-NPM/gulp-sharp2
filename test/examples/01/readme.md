@@ -1,4 +1,4 @@
-### Convert SVG to monochrome PNG
+# Convert SVG to monochrome PNG
 
 `sharp2` can create monochrome PNG from .svg files.
 

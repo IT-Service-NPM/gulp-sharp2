@@ -1,4 +1,4 @@
-### Convert images to PNG format
+# Convert images to PNG format
 
 ```typescript file=./gulpfile.ts
 import { png } from '#gulp-sharp2/gulp-sharp';

@@ -64,11 +64,10 @@ and other gulp plugins for images processing with
   - [Install](#install)
   - [Examples](#examples)
     - [Convert SVG to monochrome PNG](#convert-svg-to-monochromepng)
-    - [Replace @forward-software/gulp-sharp plugin](#replace-forward-softwaregulp-sharp-plugin)
-      - [Convert images to JPEG format](#convert-images-to-jpegformat)
-      - [Convert images to PNG format](#convert-images-to-pngformat)
-      - [Convert images to TIFF format](#convert-images-to-tiffformat)
-      - [Convert images to WebP format](#convert-images-to-webpformat)
+    - [Convert images to JPEG format](#convert-images-to-jpegformat)
+    - [Convert images to PNG format](#convert-images-to-pngformat)
+    - [Convert images to TIFF format](#convert-images-to-tiffformat)
+    - [Convert images to WebP format](#convert-images-to-webpformat)
   - [API](#api)
   - [License](#license)
 
@@ -84,7 +83,7 @@ npm install --save-dev gulp-sharp2
 
 `sharp2` can create monochrome PNG from .svg files.
 
-```typescript file=./test/examples/01/gulpfile.ts
+```typescript file=test/examples/01/gulpfile.ts
 import { sharp2 } from '#gulp-sharp2';
 import GulpClient from 'gulp';
 import rename from 'gulp-rename';
@@ -114,21 +113,15 @@ GulpClient.task(task1);
 
 Source SVG image:
 
-[![Source SVG](./test/examples/01/fixtures/test-file.svg)](./test/examples/01/fixtures/test-file.svg)
+[![Source SVG](test/examples/01/fixtures/test-file.svg)](test/examples/01/fixtures/test-file.svg)
 
 Output PNG image:
 
-[![Output PNG](./test/examples/01/output/test-file.png)](./test/examples/01/output/test-file.png)
+[![Output PNG](test/examples/01/output/test-file.png)](test/examples/01/output/test-file.png)
 
-### Replace @forward-software/gulp-sharp plugin
+### Convert images to JPEG format
 
-This plugin provides interface, compatible with
-[`@forward-software/gulp-sharp`](https://www.npmjs.com/package/@forward-software/gulp-sharp)
-plugin.
-
-#### Convert images to JPEG format
-
-```typescript file=./test/examples/02.1/gulpfile.ts
+```typescript file=test/examples/02.1/gulpfile.ts
 import { jpeg as gulpJpeg } from '#gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
@@ -143,12 +136,12 @@ GulpClient.task(task1);
 
 Source and output images:
 
-[![Source image](./test/examples/02.1/fixtures/test-file.png)](./test/examples/02.1/fixtures/test-file.png)
-[![Output image](./test/examples/02.1/output/test-file.jpeg)](./test/examples/02.1/output/test-file.jpeg)
+[![Source image](test/examples/02.1/fixtures/test-file.png)](test/examples/02.1/fixtures/test-file.png)
+[![Output image](test/examples/02.1/output/test-file.jpeg)](test/examples/02.1/output/test-file.jpeg)
 
-#### Convert images to PNG format
+### Convert images to PNG format
 
-```typescript file=./test/examples/02.2/gulpfile.ts
+```typescript file=test/examples/02.2/gulpfile.ts
 import { png } from '#gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
@@ -163,12 +156,12 @@ GulpClient.task(task1);
 
 Source and output images:
 
-[![Source image](./test/examples/02.2/fixtures/test-file.jpeg)](./test/examples/02.2/fixtures/test-file.jpeg)
-[![Output image](./test/examples/02.2/output/test-file.png)](./test/examples/02.2/output/test-file.png)
+[![Source image](test/examples/02.2/fixtures/test-file.jpeg)](test/examples/02.2/fixtures/test-file.jpeg)
+[![Output image](test/examples/02.2/output/test-file.png)](test/examples/02.2/output/test-file.png)
 
-#### Convert images to TIFF format
+### Convert images to TIFF format
 
-```typescript file=./test/examples/02.3/gulpfile.ts
+```typescript file=test/examples/02.3/gulpfile.ts
 import { tiff } from '#gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
@@ -183,12 +176,12 @@ GulpClient.task(task1);
 
 Source and output images:
 
-[![Source image](./test/examples/02.3/fixtures/test-file.png)](./test/examples/02.3/fixtures/test-file.png)
-[![Output image](./test/examples/02.3/output/test-file.tiff)](./test/examples/02.3/output/test-file.tiff)
+[![Source image](test/examples/02.3/fixtures/test-file.png)](test/examples/02.3/fixtures/test-file.png)
+[![Output image](test/examples/02.3/output/test-file.tiff)](test/examples/02.3/output/test-file.tiff)
 
-#### Convert images to WebP format
+### Convert images to WebP format
 
-```typescript file=./test/examples/02.4/gulpfile.ts
+```typescript file=test/examples/02.4/gulpfile.ts
 import { webp } from '#gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
@@ -203,8 +196,8 @@ GulpClient.task(task1);
 
 Source and output images:
 
-[![Source image](./test/examples/02.4/fixtures/test-file.jpeg)](./test/examples/02.4/fixtures/test-file.jpeg)
-[![Output image](./test/examples/02.4/output/test-file.webp)](./test/examples/02.4/output/test-file.webp)
+[![Source image](test/examples/02.4/fixtures/test-file.jpeg)](test/examples/02.4/fixtures/test-file.jpeg)
+[![Output image](test/examples/02.4/output/test-file.webp)](test/examples/02.4/output/test-file.webp)
 
 ## API
 
