@@ -3,7 +3,7 @@
 `sharp2` can create monochrome PNG from .svg files.
 
 ```typescript file=./gulpfile.ts
-import { sharp2 } from '#gulp-sharp2';
+import { sharp2 } from 'gulp-sharp2';
 import GulpClient from 'gulp';
 import rename from 'gulp-rename';
 

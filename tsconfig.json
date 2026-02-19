@@ -1,39 +1,48 @@
 {
+	"files": [],
+	"include": [
+		"./test",
+		"./vitest.config.ts"
+	],
+	"references": [
+		{
+			"path": "./tsconfig.src.json"
+		}
+	],
 	"compilerOptions": {
 		"noEmit": true,
-		/* Base Options: */
+		"allowImportingTsExtensions": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"target": "ES2022",
+		"forceConsistentCasingInFileNames": true,
+		"target": "esnext",
 		"lib": [
-			"ES2022"
+			"ESNext"
 		],
 		"allowJs": false,
 		"checkJs": false,
 		"resolveJsonModule": true,
 		"moduleDetection": "auto",
 		"module": "NodeNext",
-		// "moduleResolution": "node16",
-		// "module": "Preserve",
-		"isolatedModules": true,
+		"moduleResolution": "nodenext",
+		"isolatedModules": false,
 		"verbatimModuleSyntax": true,
-		/* Strictness */
 		"strict": true,
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
-		/* If transpiling with TypeScript: */
-		// "outDir": "dist",
-		// "rootDir": "src",
+		"noEmitOnError": true,
 		"sourceMap": true,
-		/* AND if you're building for a library: */
 		"declaration": true,
 		"declarationMap": true,
-		// "emitDeclarationOnly": true,
-		// "exactOptionalPropertyTypes": true,
-		"allowImportingTsExtensions": true,
+		"paths": {
+			"gulp-sharp2": [
+				"./dist"
+			],
+		},
 		"types": [
+			"node",
 			"vitest/globals",
-			// "@altano/vitest-plugins/matchers"
+			"@altano/vitest-plugins/matchers"
 		],
 	}
 }

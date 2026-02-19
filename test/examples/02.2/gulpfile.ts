@@ -1,4 +1,4 @@
-import { png } from '#gulp-sharp2/gulp-sharp';
+import { png } from 'gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
 function task1() {

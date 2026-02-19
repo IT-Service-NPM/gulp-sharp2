@@ -9,7 +9,7 @@ Gulp plugin stream for transformation images with [Sharp](https://www.npmjs.com/
 **Signature:**
 
 ```typescript
-declare class GulpFileTransformWithSharp extends GulpFile2BufferFile 
+export declare class GulpFileTransformWithSharp extends GulpFile2BufferFile 
 ```
 **Extends:** GulpFile2BufferFile
 

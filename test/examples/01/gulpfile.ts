@@ -1,4 +1,4 @@
-import { sharp2 } from '#gulp-sharp2';
+import { sharp2 } from 'gulp-sharp2';
 import GulpClient from 'gulp';
 import rename from 'gulp-rename';
 

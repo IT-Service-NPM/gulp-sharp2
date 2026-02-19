@@ -84,7 +84,7 @@ npm install --save-dev gulp-sharp2
 `sharp2` can create monochrome PNG from .svg files.
 
 ```typescript file=test/examples/01/gulpfile.ts
-import { sharp2 } from '#gulp-sharp2';
+import { sharp2 } from 'gulp-sharp2';
 import GulpClient from 'gulp';
 import rename from 'gulp-rename';
 
@@ -122,7 +122,7 @@ Output PNG image:
 ### Convert images to JPEG format
 
 ```typescript file=test/examples/02.1/gulpfile.ts
-import { jpeg as gulpJpeg } from '#gulp-sharp2/gulp-sharp';
+import { jpeg as gulpJpeg } from 'gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
 function task1() {
@@ -142,7 +142,7 @@ Source and output images:
 ### Convert images to PNG format
 
 ```typescript file=test/examples/02.2/gulpfile.ts
-import { png } from '#gulp-sharp2/gulp-sharp';
+import { png } from 'gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
 function task1() {
@@ -162,7 +162,7 @@ Source and output images:
 ### Convert images to TIFF format
 
 ```typescript file=test/examples/02.3/gulpfile.ts
-import { tiff } from '#gulp-sharp2/gulp-sharp';
+import { tiff } from 'gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
 function task1() {
@@ -182,7 +182,7 @@ Source and output images:
 ### Convert images to WebP format
 
 ```typescript file=test/examples/02.4/gulpfile.ts
-import { webp } from '#gulp-sharp2/gulp-sharp';
+import { webp } from 'gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
 function task1() {

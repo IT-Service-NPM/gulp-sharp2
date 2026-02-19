@@ -15,7 +15,7 @@ This function create new [Sharp](https://www.npmjs.com/package/sharp) object wit
 **Signature:**
 
 ```typescript
-declare function sharp2(process: Process, options?: Options): NodeJS.ReadWriteStream;
+export declare function sharp2(process: Process, options?: Options): NodeJS.ReadWriteStream;
 ```
 
 ## Parameters

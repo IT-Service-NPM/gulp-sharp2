@@ -9,7 +9,7 @@
 **Signature:**
 
 ```typescript
-type Process = (sharpObject: Sharp) => Sharp;
+export type Process = (sharpObject: Sharp) => Sharp;
 ```
 
 ## Remarks

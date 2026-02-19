@@ -1,4 +1,4 @@
-import { tiff } from '#gulp-sharp2/gulp-sharp';
+import { tiff } from 'gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
 function task1() {

@@ -1,7 +1,7 @@
 # Convert images to JPEG format
 
 ```typescript file=./gulpfile.ts
-import { jpeg as gulpJpeg } from '#gulp-sharp2/gulp-sharp';
+import { jpeg as gulpJpeg } from 'gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
 function task1() {

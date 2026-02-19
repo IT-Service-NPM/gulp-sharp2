@@ -1,0 +1,20 @@
+{
+	"extends": "./tsconfig.json",
+	"include": [
+		"./src"
+	],
+	"compilerOptions": {
+		"composite": true,
+		"noEmit": false,
+		"allowImportingTsExtensions": false,
+		"outDir": "./dist",
+		"baseUrl": "./src",
+		"rootDir": "./src",
+		"sourceMap": true,
+		"declaration": true,
+		"declarationMap": true,
+		"types": [
+			"node"
+		],
+	}
+}

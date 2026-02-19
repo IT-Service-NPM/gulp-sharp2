@@ -1,7 +1,7 @@
 # Convert images to WebP format
 
 ```typescript file=./gulpfile.ts
-import { webp } from '#gulp-sharp2/gulp-sharp';
+import { webp } from 'gulp-sharp2/gulp-sharp';
 import GulpClient from 'gulp';
 
 function task1() {

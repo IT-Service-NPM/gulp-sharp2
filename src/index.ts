@@ -1,1 +1,1 @@
-export * from './sharp2/index.ts';
+export * from './sharp2/index.js';

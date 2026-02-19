@@ -12,7 +12,7 @@
 
 import path from 'node:path';
 import GulpFile, { type BufferFile } from 'vinyl';
-import { GulpFile2BufferFile } from '../lib/fileBase.ts';
+import { GulpFile2BufferFile } from '../lib/fileBase.js';
 import sharp, { type Sharp, type SharpOptions } from 'sharp';
 import logger from 'gulplog';
 

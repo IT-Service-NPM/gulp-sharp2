@@ -21,7 +21,7 @@ import {
   GulpFileTransformWithSharp,
   type Options,
   type Process
-} from '../sharp2/sharp2.ts';
+} from '../sharp2/index.js';
 
 /**
  * Gulp plugin stream for convert images with

@@ -9,7 +9,7 @@
 **Signature:**
 
 ```typescript
-interface Options 
+export interface Options 
 ```
 
 ## Remarks
