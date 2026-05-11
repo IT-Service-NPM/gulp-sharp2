@@ -61,7 +61,7 @@
 		"@commitlint/cli": "^20.4.1",
 		"@commitlint/config-angular": "^20.4.1",
 		"@commitlint/config-conventional": "^20.4.1",
-		"@commitlint/types": "^20.4.0",
+		"@commitlint/types": "^21.0.0",
 		"@eslint/js": "^10.0.1",
 		"@it-service-npm/remark-include": "^5.0.0",
 		"@microsoft/api-documenter": "^7.29.0",
